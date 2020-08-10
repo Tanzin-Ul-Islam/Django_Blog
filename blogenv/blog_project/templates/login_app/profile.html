@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+<h4>Profile</h4>
+{% if user.userprofile %}
+<img src="/media/{{user.userprofile.profile_pic}}" class="rounded-circle" width="100px"><br>
+<a href="{% url 'login_app:changepic' %}" class="btn btn-warning btn-sm" style="margin-top: 10px; margin-bottom: 10px;">Change Pic</a>
+{% else %}
+<img src="/media/profile_pics/default_user.png" class="rounded-circle" width="100px"><br>
+<a href="{% url 'login_app:uploadpic' %}" class="btn btn-info btn-sm" style="margin-top: 10px; margin-bottom: 10px;">Upload Pic</a>
+{% endif %}
+<h5>User name:&ensp;{{user.username}}</h5>
+<h5>Email:&ensp;{{user.email}}</h5>
+<h5>Name:&ensp;{{user.first_name}}{{user.last_name}}</h5>
+<a class="btn btn-warning btn-sm" href="{% url 'login_app:updateprofile' %}">Update Profile</a>
+{% endblock %}

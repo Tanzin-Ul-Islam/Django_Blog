@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load custom_filters %}
+<title>blog list</title>
+{% block content %}
+{% for blog in blogs %}
+<h4>{{blog.blog_title}}</h4>
+{{blog.publish_date}}<br>
+<div class="row">
+<div class="col-sm-4">
+<img src="/media/{{blog.blog_image}}" height="150px" width="200">
+</div>
+<div class="col-sm-8">
+<p>{{blog.blog_content|range_filter|linebreaks}} <a href="{% url 'blog_app:blog_details' slug=blog.slug %}">Continue reading..</a></p>
+<p>{{blog.bolg_comment.count}}&nbsp;Comments&ensp;&ensp;&ensp;{{blog.blog_like.count}}&nbsp;Likes</p>
+<a href="#" style="color:black;">@{{blog.author}}</a>
+</div>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %} {{user}} {% endblock %}
+{% block content %}
+{% for blog in user.post_author.all %}
+<h4>{{blog.blog_title}}</h4>
+{{blog.publish_date}}<br>
+<div class="row">
+<div class="col-sm-4">
+<img src="/media/{{blog.blog_image}}" height="150px" width="200">
+</div>
+<div class="col-sm-8">
+<p>{{blog.blog_content|range_filter|linebreaks}} <a href="{% url 'blog_app:blog_details' slug=blog.slug %}">Continue reading..</a>
+<a href="{% url 'blog_app:editblog' pk=blog.pk %}" style="color:green; margin-left:20px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Blog</a>
+</p>
+<a href="#" style="color:black;">@{{blog.author}}</a>
+</div>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}

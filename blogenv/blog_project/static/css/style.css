@@ -1,0 +1,11 @@
+.comment{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ0sV8-Ou9AiLtViTTWU5LjeZdVlsAA6d5QcVUH6Gl2A4WW12lk&usqp=CAU);
+    position: relative;
+    width: 421px;
+    height: 150px;
+    margin-left: 300px;
+    padding: 5px;
+    background-color: #00000052;
+    border: 2px solid gray;
+    border-radius: 8px;
+}
